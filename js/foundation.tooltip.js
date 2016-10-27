@@ -6,6 +6,7 @@
  * Tooltip module.
  * @module foundation.tooltip
  * @requires foundation.util.box
+ * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
 
@@ -55,7 +56,7 @@ class Tooltip {
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    }).addClass(this.triggerClass);
+    }).addClass(this.options.triggerClass);
 
     //helper variables to track movement on collisions
     this.usedPositions = [];
@@ -170,7 +171,7 @@ class Tooltip {
    * @function
    */
   show() {
-    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)) {
+    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.is(this.options.showOn)) {
       // console.error('The screen is too small to display this tooltip');
       return false;
     }
